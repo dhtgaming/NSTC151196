@@ -1,0 +1,44 @@
+{% include 'baza.html' %}
+{% include 'nawigacja.html' %}
+{% block content %}
+
+{% ifequal error "Nie" %}
+<script>
+    alert('Dodano pomyślnie !');
+    window.location = "{% url 'view_appointment' %}";
+</script>
+{% endifequal %}
+
+{% ifequal error "Tak" %}
+<script>
+    alert('Błąd !');
+</script>
+{% endifequal %}
+
+<div class="container">
+    <h2 class="text-center">Dodaj Wizytę</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Imię i nazwisko Doktora</label>
+        <select name="doktor" class="form-control">
+            {% for i in doktor %} 
+            <option value="{{ i.imie}}">{{i.imie}}</option>
+            {% endfor %}
+        </select>
+        <label>Imię i nazwisko Pacjenta</label>
+        <select name="pacjent" class="form-control">
+            {% for i in pacjent %} 
+            <option value="{{ i.imie}}">{{i.imie}}</option>
+            {% endfor %}
+        </select>
+        <label>Data</label>
+        <input type="date" class="form-control" name="data">
+        <label>Czas</label>
+        <input type="time" class="form-control" name="czas">
+        <input type="submit" value="Wyślij" class="form-control btn btn-primary">
+    </form>
+
+</div>
+
+{% endblock content %}
+{% include 'stopka.html' %}
