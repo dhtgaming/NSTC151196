@@ -1,0 +1,31 @@
+{% include 'baza.html' %}
+{% include 'nawigacja.html' %}
+{% block content %}
+
+{% ifequal error "Nie" %}
+<script>
+    alert('Zalogowano pomyślnie !');
+    window.location = "{% url 'dashboard' %}";
+</script>
+{% endifequal %}
+
+{% ifequal error "Tak" %}
+<script>
+    alert('Błędny login lub hasło !');
+</script>
+{% endifequal %}
+
+<div class="container">
+    <h2 class="text-center">Panel logowania</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Nazwa uzytkownika</label>
+        <input type="text" class="form-control" name="uname">
+        <label>Hasło</label>
+        <input type="password" class="form-control" name="pwd">
+        <input type="submit" value="Login" class="form-control btn btn-primary">
+    </form>
+
+</div>
+{% endblock content %}
+{% include 'stopka.html' %}

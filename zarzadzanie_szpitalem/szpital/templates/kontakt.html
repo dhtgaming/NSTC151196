@@ -1,0 +1,34 @@
+{% include 'baza.html' %}
+{% include 'nawigacja.html' %}
+
+<style>
+    .mydivstyle:hover {
+        box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+        transform: translateY(-20px);
+    }
+</style>
+
+{% block content %}
+<div class="container" style="margin-top: 50px;">
+    <h1 class="text-center">Kontakt</h1>
+    <div class="row mt-5 text-center">
+      <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h4><i class="fas fa-phone-square"> Telefon</i></h4>
+        <p class="font-weight-bold mt-3"><a href="tel:+48123456789">+48 456 123 789</a></p>
+      </div>
+      <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h4><i class="fas fa-envelope"></i> E-mail</h4>
+        <p class="font-weight-bold mt-3"><a href="mailto:kontakt@shp.pl">admin@example.com</a></p>
+      </div>
+      <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h4><i class="fa fa-address-card" aria-hidden="true"></i> Adres</h4>
+        <p class="font-weight-bold mt-3"><a href="http://maps.google.com/maps?q=warszawa">Olsztyn</a></p>
+      </div>
+      <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h4><i class="fa fa-clock"></i> Czas pracy</h4>
+        <p class="font-weight-bold mt-3"> Pon/Pt 8/22</p>
+      </div>
+    </div>
+  </div>  
+{% endblock content %}
+{% include 'stopka.html' %}

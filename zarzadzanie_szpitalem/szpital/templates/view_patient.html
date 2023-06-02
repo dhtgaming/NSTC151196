@@ -1,0 +1,32 @@
+{% include 'baza.html' %}
+{% include 'nawigacja.html' %}
+{% block content %}
+<div>
+    <h2 class="text-center">Pacjenci</h2>
+    <table id="tabela" class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID Pacjenta</th>
+                <th>Imie i nazwisko</th>
+                <th>Płeć</th>
+                <th>Telefon</th>
+                <th>Adres</th>
+                <th>Usuń</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in doc %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.imie}}</td>
+                <td>{{i.plec}}</td>
+                <td>{{i.telefon}}</td>
+                <td>{{i.adres}}</td>
+                <td><a href="{% url 'delete_patient' i.id %}" onclick="return confirm('Usunąć pacjenta ?')" class="btn btn-danger">Usuń</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+{% include 'stopka.html' %}
